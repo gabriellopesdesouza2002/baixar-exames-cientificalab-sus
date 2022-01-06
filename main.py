@@ -8,7 +8,7 @@ from time import sleep
 def req():
     request = pyautogui.prompt(text='Coloque o número da requisição:\n\n'
                                     'É parecido como esse -> 1234567890', title='Número da Requisição...',
-                               default='2118183686')
+                               default='')
 
     if len(request) >= 11 or len(request) < 10 or request.isalpha() or request.islower() or request.istitle():
         pyautogui.alert(text=f'Você digitou algo que não é válido!', title='NÚMERO DA REQUISIÇÃO!',
@@ -38,8 +38,8 @@ request = req()
 
 
 def passwd():
-    password = pyautogui.password(text='Digite a senha do para acessar os resultados de exames\n'
-                                       'Exemplo: 101798', title='Senha', default='101798', mask='*')
+    password = pyautogui.password(text='Digite a senha do para acessar os resultados de exames.\n'
+                                       'Exemplo: 123456', title='Senha', default='', mask='')
 
     if len(password) >= 7 or len(password) < 6 or password.isalpha() or password.islower() or password.istitle():
         pyautogui.alert(text=f'Você digitou algo que não é válido!', title='SENHA!',
@@ -70,6 +70,9 @@ chrome.find_element_by_xpath('//*[@id="ztmFormLogin"]/div/div/ul/li[2]/a/span[2]
 chrome.find_element_by_xpath('//*[@id="ztmLogin"]').send_keys(request)
 chrome.find_element_by_xpath('//*[@id="ztmSenha"]').send_keys(passw)
 chrome.find_element_by_xpath('//*[@id="ztmEntrar"]').click()
+
+
+
 
 sleep(1)
 chrome.find_element_by_xpath('//*[@id="accordion"]/div/div[1]/div[1]/div').click()

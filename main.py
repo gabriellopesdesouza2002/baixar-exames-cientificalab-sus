@@ -3,6 +3,7 @@
 import pyautogui
 from selenium import webdriver
 from time import sleep
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 def req():
@@ -30,8 +31,6 @@ def req():
             os.execl(python, python, *sys.argv)
         elif confirma == 'ESTÁ TUDO CERTO!':
             return request
-
-
 
 
 request = req()
@@ -63,16 +62,14 @@ def passwd():
 
 passw = passwd()
 
-chrome = webdriver.Chrome('chromedriver')  # Seta o chrome como o chromedriver
+chrome = webdriver.Chrome(ChromeDriverManager().install())
+chrome.maximize_window()
 chrome.get('https://tmlablaudos.cientificalab.com.br/laudos/#')  # vai para o site da cientificalab
 chrome.find_element_by_xpath('//*[@id="ztmFormLogin"]/div/button/span[1]').click()
 chrome.find_element_by_xpath('//*[@id="ztmFormLogin"]/div/div/ul/li[2]/a/span[2]').click()
 chrome.find_element_by_xpath('//*[@id="ztmLogin"]').send_keys(request)
 chrome.find_element_by_xpath('//*[@id="ztmSenha"]').send_keys(passw)
 chrome.find_element_by_xpath('//*[@id="ztmEntrar"]').click()
-
-
-
 
 sleep(1)
 chrome.find_element_by_xpath('//*[@id="accordion"]/div/div[1]/div[1]/div').click()
@@ -87,12 +84,13 @@ if download_exames == 'Sim':
     chrome.find_element_by_xpath('//*[@id="btnImprimeReq"]/span').click()
     sleep(10)
 
-    cont = 1
-    while cont <= 8:
-        pyautogui.hotkey('tab')
-        cont += 1
-    else:
-        pyautogui.press('space')
-        sleep(5)
-        pyautogui.write('Exames.pdf')
-        pyautogui.press('enter')
+    pyautogui.hotkey('ctrl', 's')
+    sleep(5)
+    pyautogui.alert(text=f'Meu trabalho acaba por aqui, você pode baixar o arquivo, com o nome que desejar e '
+                         f'no local que desejar também!',
+                    title='MEU TRABALHO ACABOU',
+                    button='Tudo bem, vou escolher um local e um nome para o arquivo...')
+else:
+    pyautogui.alert(text=f'Meu trabalho acaba por aqui, você pode ver o(s) exame(s), ou baixar manualmente...!',
+                    title='MEU TRABALHO POR AQUI ACABOU!',
+                    button='OK...')

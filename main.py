@@ -1,5 +1,3 @@
-# Atualmente só funciona no Chrome na versáo 96#
-# executar as coisas do selenium dentro da funcao, mas um while true...#
 import pyautogui
 from selenium import webdriver
 from time import sleep
@@ -64,7 +62,7 @@ passw = passwd()
 
 chrome = webdriver.Chrome(ChromeDriverManager().install())
 chrome.maximize_window()
-chrome.get('https://tmlablaudos.cientificalab.com.br/laudos/#')  # vai para o site da cientificalab
+chrome.get('https://tmlablaudos.cientificalab.com.br/laudos/#')
 chrome.find_element_by_xpath('//*[@id="ztmFormLogin"]/div/button/span[1]').click()
 chrome.find_element_by_xpath('//*[@id="ztmFormLogin"]/div/div/ul/li[2]/a/span[2]').click()
 chrome.find_element_by_xpath('//*[@id="ztmLogin"]').send_keys(request)

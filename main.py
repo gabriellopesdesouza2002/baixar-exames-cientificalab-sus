@@ -2,12 +2,13 @@ import pyautogui
 from selenium import webdriver
 from time import sleep
 from webdriver_manager.chrome import ChromeDriverManager
+import data
 
 
 def req():
     request = pyautogui.prompt(text='Coloque o número da requisição:\n\n'
                                     'É parecido como esse -> 1234567890', title='Número da Requisição...',
-                               default='')
+                               default=data.default_request)
 
     if len(request) >= 11 or len(request) < 10 or request.isalpha() or request.islower() or request.istitle():
         pyautogui.alert(text=f'Você digitou algo que não é válido!', title='NÚMERO DA REQUISIÇÃO!',
@@ -36,7 +37,7 @@ request = req()
 
 def passwd():
     password = pyautogui.password(text='Digite a senha do para acessar os resultados de exames.\n'
-                                       'Exemplo: 123456', title='Senha', default='', mask='')
+                                       'Exemplo: 123456', title='Senha', default=data.default_password, mask='')
 
     if len(password) >= 7 or len(password) < 6 or password.isalpha() or password.islower() or password.istitle():
         pyautogui.alert(text=f'Você digitou algo que não é válido!', title='SENHA!',
@@ -60,18 +61,18 @@ def passwd():
 
 passw = passwd()
 
-chrome = webdriver.Chrome(ChromeDriverManager().install())
-chrome.maximize_window()
-chrome.get('https://tmlablaudos.cientificalab.com.br/laudos/#')
-chrome.find_element_by_xpath('//*[@id="ztmFormLogin"]/div/button/span[1]').click()
-chrome.find_element_by_xpath('//*[@id="ztmFormLogin"]/div/div/ul/li[2]/a/span[2]').click()
-chrome.find_element_by_xpath('//*[@id="ztmLogin"]').send_keys(request)
-chrome.find_element_by_xpath('//*[@id="ztmSenha"]').send_keys(passw)
-chrome.find_element_by_xpath('//*[@id="ztmEntrar"]').click()
+chrome = webdriver.Chrome(ChromeDriverManager().install())  # Define o driver como o Chrome
+chrome.maximize_window()  # Maximiza a janela do Navegador
+chrome.get('https://tmlablaudos.cientificalab.com.br/laudos/#')  # Vai para o site de Login da CientíficaLab
+chrome.find_element_by_xpath('//*[@id="ztmFormLogin"]/div/button/span[1]').click()  # Clica no button "Consultas"
+chrome.find_element_by_xpath('//*[@id="ztmFormLogin"]/div/div/ul/li[2]/a/span[2]').click()  # Define o button como "Paciente"
+chrome.find_element_by_xpath('//*[@id="ztmLogin"]').send_keys(request)  # Envia o Número da Requisição
+chrome.find_element_by_xpath('//*[@id="ztmSenha"]').send_keys(passw)  # Envia a Senha da Requisição
+chrome.find_element_by_xpath('//*[@id="ztmEntrar"]').click()  # Clica no button "Ok"
 
-sleep(1)
-chrome.find_element_by_xpath('//*[@id="accordion"]/div/div[1]/div[1]/div').click()
-sleep(5)
+sleep(3)
+chrome.find_element_by_xpath('//*[@id="accordion"]/div/div[1]/div[1]/div').click()  # Clica na div "Ver Laudo"
+sleep(6)
 
 download_exames = pyautogui.confirm(text='Você gostaria de baixar o(s) exame(s)?', title='Baixar?',
                                     buttons=['Sim', 'Não'])
@@ -79,7 +80,7 @@ download_exames = pyautogui.confirm(text='Você gostaria de baixar o(s) exame(s)
 if download_exames == 'Sim':
     pyautogui.alert(text='ATENÇÃO: NÃO UTILIZE SEU TECLADO, ATÉ QUE O DOWNLOAD SEJÁ CONCLUIDO!', title='ALERTA!',
                     button='TUDO BEM...')
-    chrome.find_element_by_xpath('//*[@id="btnImprimeReq"]/span').click()
+    chrome.find_element_by_xpath('//*[@id="btnImprimeReq"]/span').click()  # Clica no botáo "Imprimir"
     sleep(10)
 
     pyautogui.hotkey('ctrl', 's')

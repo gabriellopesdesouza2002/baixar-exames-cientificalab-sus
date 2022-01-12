@@ -36,7 +36,7 @@ then    echo
         echo
         sudo pip install selenium pyautogui webdriver-manager
         sleep 2  # Espera 2 segundos
-        sudo pip install --update requests
+        sudo pip install --upgrade requests
         sleep 2  # Espera 2 segundos
         echo
         echo 'Limpando a tela...'

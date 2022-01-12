@@ -6,11 +6,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 def req():
-    request = pyautogui.prompt(text='Coloque o número da requisição:\n\n'
-                                    'É parecido como esse -> 1234567890', title='Número da Requisição...',
+    nrequest = pyautogui.prompt(text='Coloque o número da requisição:\n\n'
+                                    'Exemplo: 5784235481', title='Digite o Número da Requisição.',
                                default='')
 
-    if len(request) >= 11 or len(request) < 10 or request.isalpha() or request.islower() or request.istitle():
+    if len(nrequest) >= 11 or len(nrequest) < 10 or nrequest.isalpha() or nrequest.islower() or nrequest.istitle():
         pyautogui.alert(text=f'Você digitou algo que não é válido!', title='NÚMERO DA REQUISIÇÃO!',
                         button='Tente novamente!')
         import sys
@@ -18,8 +18,8 @@ def req():
         python = sys.executable
         os.execl(python, python, *sys.argv)
     else:
-        confirma = pyautogui.confirm(text='Confira se os dados estão corretos...\n'
-                                          f'Número da requisição: {request}',
+        confirma = pyautogui.confirm(text='Confira se os dados estão corretos...\n\n'
+                                          f'Número da requisição: {nrequest}',
                                      title='CONFIRA SEUS DADOS!',
                                      buttons=['ESTÁ TUDO CERTO!', 'PRECISO ALTERAR...'])
 
@@ -29,15 +29,15 @@ def req():
             python = sys.executable
             os.execl(python, python, *sys.argv)
         elif confirma == 'ESTÁ TUDO CERTO!':
-            return request
+            return nrequest
 
 
-request = req()
+nrequest = req()
 
 
 def passwd():
     password = pyautogui.password(text='Digite a senha do para acessar os resultados de exames.\n'
-                                       'Exemplo: 123456', title='Senha', default='', mask='')
+                                       'Exemplo: 159732', title='Digite Sua Senha.', default='', mask='')
 
     if len(password) >= 7 or len(password) < 6 or password.isalpha() or password.islower() or password.istitle():
         pyautogui.alert(text=f'Você digitou algo que não é válido!', title='SENHA!',
@@ -66,7 +66,7 @@ chrome.maximize_window()
 chrome.get('https://tmlablaudos.cientificalab.com.br/laudos/#')
 chrome.find_element(By.XPATH, '//*[@id="ztmFormLogin"]/div/button/span[1]').click()
 chrome.find_element(By.XPATH, '//*[@id="ztmFormLogin"]/div/div/ul/li[2]/a/span[2]').click()
-chrome.find_element(By.XPATH, '//*[@id="ztmLogin"]').send_keys(request)
+chrome.find_element(By.XPATH, '//*[@id="ztmLogin"]').send_keys(nrequest)
 chrome.find_element(By.XPATH, '//*[@id="ztmSenha"]').send_keys(passw)
 chrome.find_element(By.XPATH, '//*[@id="ztmEntrar"]').click()
 

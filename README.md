@@ -1,35 +1,35 @@
 
-# Bot para acessar seu(s) exame(s) do SUS (Sistema Único de Saúde) no site da [CientíficaLab](https://cientificalab.com.br/) rapidamente.  
+# Bot para acessar o seu(s) exame(s) do SUS (Sistema Único de Saúde) no site da [CientíficaLab](https://cientificalab.com.br/) rapidamente.  
   
 ### **Com esse bot, você pode pegar e baixar seus exames rapidamente, automatizando algumas etapas.**  
   
 ## Como que foi feito esse robô?  
-Esse robô foi feito em Python e suas bibliotecas:  
+Esse robô foi feito em Python na versão 3.8 e as suas bibliotecas:  
 
-- Python 3.8
 - Pyautogui  
 - Selenium  
 - webdriver_manager.chrome  
   
 ## Requisitos para usar o robô...  
-- Ter um Sistema Operacional Linux com arquitetura 64 bits.  
+1 – Ter um Sistema operativo Linux com arquitetura 64 bits. 
       Veja no Terminal... `uname -i`  
   
- - #### Python 3.8, Selenium, Pyautogui e webdriver_manager.chrome (**Tudo será feito por um assistente, para lhe ajudar!** )  
+2 - Python na versão 3.8, Selenium, Pyautogui e Webdriver Manager (**Tudo será feito por um assistente, para lhe ajudar!** )  
+ 
+3 - Ter o **Chrome** instalado.
   
-- #### Ter o Chrome como navegador padrão.  
-  
-- #### Protocolo de retirada de exames, que contém o *Número da Requisição* e a *Senha*.  
+4 - Protocolo de retirada de exames, que contém o ***Número da Requisição*** e a ***Senha***.
+
 ---  
   
-> Atualmente uso o Linux Mint como Sistema Operacional, então, todo o processo será feito para utilizar em distribuições Linux que tem como base o Ubuntu.
+> Atualmente uso o Linux Mint como Sistema operativo, então, todo o processo será feito para utilizar em distribuições Linux que tem como base o Ubuntu.
 > 
 > Distribuições Linux testadas até agora (posteriormente, haverá mais!):
 > 
 > - Linux Mint (19 e 20).
   
   
-### Antes de tudo verifique se existe atualizações no *Gerenciador de Atualizações*  
+### Antes de tudo verifique se existem atualizações no *Gerenciador de Atualizações*  
   
 ![verifica_atualizacoes](https://user-images.githubusercontent.com/65515076/148704585-143a80c5-dbd5-481e-a561-5f3665378694.gif)  
   
@@ -49,7 +49,7 @@ Esse robô foi feito em Python e suas bibliotecas:
   
 ---  
   
-- Vá para uma pasta de sua preferência (eu utilizarei a pasta Documentos):  
+- Vá para uma pasta da sua preferência (eu utilizarei a pasta Documentos):  
   
       cd Documentos  
   

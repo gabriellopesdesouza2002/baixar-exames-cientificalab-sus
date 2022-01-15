@@ -1,30 +1,47 @@
 
-# Bot para acessar o seu(s) exame(s) do SUS (Sistema Único de Saúde) no site da [CientíficaLab](https://cientificalab.com.br/) rapidamente.  
+# Acesse seu(s) exame(s) do SUS (Sistema Único de Saúde) no site da [CientíficaLab](https://cientificalab.com.br/) ®.  
   
-### **Com esse bot, você pode pegar e baixar seus exames rapidamente, automatizando algumas etapas.**  
+### **Com esse “bot”, você pode acessar, ver e baixar os seus exames rapidamente.**  
   
-## Como que foi feito esse robô?  
-Esse robô foi feito em Python na versão 3.8 e as suas bibliotecas:  
+## Como foi feito esse robô?  
+Esse robô foi feito com Python na versão 3.8 e as suas bibliotecas:
+- Pyautogui
+- Selenium
+- Webdriver Manager
+  
+> O "bot" irá acessar ao site da [CientíficaLab](https://cientificalab.com.br/) ®, entrará com o número da requisição
+> e a senha, e perguntará se você quer baixar os exames ou simplesmente ver os mesmos. 
+> 
+> O número da requisição e a senha foi entregue pelo enfermeiro(a), médico(a) ou Aux. de Enfermagem
+> na hora em que você fez o exame.
 
-- Pyautogui  
-- Selenium  
-- webdriver_manager.chrome  
-  
 ## Requisitos para usar o robô...  
-1 – Ter um Sistema operativo Linux com arquitetura 64 bits. 
-      Veja no Terminal... `uname -i`  
-  
-2 - Python na versão 3.8, Selenium, Pyautogui e Webdriver Manager (**Tudo será feito por um assistente, para lhe ajudar!** )  
+1 – Utilizar Linux.
+
+2 – Ter instalado na máquina o **Python na versão 3.8, Selenium, Pyautogui e Webdriver Manager** 
+
+ - (**Tudo será instalado por um 
+assistente, para lhe ajudar!**)  
  
-3 - Ter o **Chrome** instalado.
+
+> - Se o seu sistema for de **64 bits**, é necessário ter o **Google Chrome** instalado.
+>
+> - Se o seu sistema for de **32 bits**, é necessário ter o **Mozila Firefox** instalado.
+> 
+> **De qualquer forma, o assistente identificará e se necessário instalará.**
   
-4 - Protocolo de retirada de exames, que contém o ***Número da Requisição*** e a ***Senha***.
+5 – Protocolo de retirada de exames, que contém o ***Número da Requisição*** e a ***Senha***.
 
 ---  
   
-> Atualmente uso o Linux Mint como Sistema operativo, então, todo o processo será feito para utilizar em distribuições Linux que tem como base o Ubuntu.
+> Atualmente o robô foi feito para utilizar no Linux Mint como Sistema operativo.
 > 
-> Distribuições Linux testadas até agora (posteriormente, haverá mais!):
+> Você pode tentar utilizar o robô em outras distribuições, que são baseadas no Ubuntu.
+> 
+> Posteriormente, irei desenvolver estas soluções para as demais distribuições Linux e quem sabe, 
+> até para o Windows...
+> 
+> Distribuições Linux testadas até o momento:
 > 
 > - Linux Mint (19 e 20).
   
@@ -81,7 +98,7 @@ Esse robô foi feito em Python na versão 3.8 e as suas bibliotecas:
   
 
  - ### Após a finalização do assistente acima, inicie o robô:  
-Agora, devemos ir para a pasta raiz do bot, na qual é **baixar-exames-cientificalab-sus** e iniciar o robô.  
+Agora, devemos ir para a pasta raiz do "bot", na qual é **`baixar-exames-cientificalab-sus`** e iniciar o robô.  
   
 Ir para a pasta raiz: 
 
@@ -103,7 +120,8 @@ Ir para a pasta raiz:
 
 
 ---
-Ensina-me a fazer a tua vontade, pois tu és o meu Deus; que o teu bondoso Espírito me conduza por terreno plano .
+Ensina-me a fazer a tua vontade, pois tu és o meu Deus; 
+que o teu bondoso Espírito me conduza por terreno plano.
 
 Salmos 143:10
 

@@ -12,13 +12,13 @@ arquitetura=$(uname -m)
 
 if [ $arquitetura == 'x86_64' ] ;
 then    echo
-		echo '--------------------------------------------------------------------------'
-        echo 'A sua arquitetura é 64 bits. Por isso, o processo seguirá normalmente!    |'
-        echo '--------------------------------------------------------------------------'
+	echo '--------------------------------------------------------------------------------'
+        echo '|    A sua arquitetura é 64 bits. Por isso, o processo seguirá normalmente!    |'
+        echo '--------------------------------------------------------------------------------'
         echo
         echo 'Verificando atualizações...'
         echo
-        sudo apt update && sudo apt upgrade -y
+        sudo apt update && sudo apt upgrade && sudo apt autoremove -y
         echo
         echo 'Limpando a tela...'
         sleep 2  # Espera 2 segundos
@@ -33,13 +33,14 @@ then    echo
         sleep 2  # Espera 2 segundos
         clear
 
-        echo 'Fazendo configurações para Selenium, Pyautogui e webdriver-manager'
+        echo 'Fazendo configurações para Selenium, Pyautogui e Webdriver Manager'
         sleep 2  # Espera 2 segundos
         echo
-        sudo pip install selenium pyautogui webdriver-manager
+        sudo pip3 install selenium pyautogui webdriver-manager
         sleep 2  # Espera 2 segundos
-        sudo pip install --upgrade requests
+        sudo pip3 install --upgrade requests
         sleep 2  # Espera 2 segundos
+	sudo pip3 install --upgrade setuptools
         echo
         echo 'Limpando a tela...'
         sleep 2  # Espera 2 segundos
@@ -62,7 +63,7 @@ then    echo
                 exit
         fi
 else    echo
-		    echo '----------------------------------------'
+	echo '----------------------------------------'
         echo '|     A sua arquitetura é 32 bits.     |'
         echo '----------------------------------------'
         echo
@@ -70,7 +71,7 @@ else    echo
         echo
         echo 'Verificando atualizações...'
         echo
-        sudo apt update && sudo apt upgrade -y
+        sudo apt update && sudo apt upgrade && sudo apt autoremove -y
         echo
         echo 'Limpando a tela...'
         sleep 2  # Espera 2 segundos
@@ -92,6 +93,7 @@ else    echo
         sleep 2  # Espera 2 segundos
         sudo pip3 install --upgrade requests
         sleep 2  # Espera 2 segundos
+	sudo pip3 install --upgrade setuptools
         echo
         echo 'Limpando a tela...'
         sleep 2  # Espera 2 segundos

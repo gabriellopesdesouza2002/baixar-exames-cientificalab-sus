@@ -26,7 +26,7 @@ then    echo
 
         echo 'Fazendo configurações...'
         echo
-        sudo apt install git wget python3 python3-dev python3-tk python3-pip -y
+        sudo apt install git wget python3 python python3-dev python-dev python3-tk python-tk python3-pip python-pip -y
         sleep 2  # Espera 2 segundos
         echo
         echo 'Limpando a tela...'

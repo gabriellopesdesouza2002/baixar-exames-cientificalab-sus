@@ -18,7 +18,7 @@ then    echo
         echo
         echo 'Verificando atualizações...'
         echo
-        sudo apt update && sudo apt upgrade && sudo apt autoremove -y
+        sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove  -y
         echo
         echo 'Limpando a tela...'
         sleep 2  # Espera 2 segundos

@@ -43,7 +43,8 @@ assistente, para lhe ajudar!**)
 > 
 > Distribuições Linux testadas até o momento:
 > 
-> - Linux Mint (19 e 20).
+> - Linux Mint 64 bits e 32 bits (19).
+> - Linux Lite 64 bits (5.4).
   
   
 ### Antes de tudo verifique se existem atualizações no *Gerenciador de Atualizações*  

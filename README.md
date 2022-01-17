@@ -46,9 +46,13 @@ assistente, para lhe ajudar!**)
 > - Linux Mint 64 bits e 32 bits (19).
 > - Linux Lite 64 bits (5.4).
   
-  
+---
+
+# Instalação e configuração, para utilizar o bot.
+> Essa configuração só será necessária fazer uma vez!
 ### Antes de tudo verifique se existem atualizações no *Gerenciador de Atualizações*  
-  
+---
+
 ![verifica_atualizacoes](https://user-images.githubusercontent.com/65515076/148704585-143a80c5-dbd5-481e-a561-5f3665378694.gif)  
   
   

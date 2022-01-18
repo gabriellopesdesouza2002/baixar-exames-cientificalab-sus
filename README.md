@@ -123,7 +123,7 @@ Ir para a pasta raiz:
 > Qualquer erro ocorrido, por favor, entre em contato. Resolveremos juntos!  
 > ;-)
 
-
+Existe uma versão inicial para Windows, porém, pode não funcionar corretamente...
 ---
 Ensina-me a fazer a tua vontade, pois tu és o meu Deus; 
 que o teu bondoso Espírito me conduza por terreno plano.

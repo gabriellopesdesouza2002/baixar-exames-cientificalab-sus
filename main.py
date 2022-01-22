@@ -62,48 +62,52 @@ if '64' in arquitetura:
                     elif confirma == 'ESTÁ TUDO CERTO!':
                         return nrequest
             except Exception:
-                pyau.alert(
-                    text=f'Ocorreu um erro inesperado!\n\n'
-                         f'Tente novamente, se o erro persistir, entre em contato com o Desenvolvedor.',
-                    title='Erro Crítico',
-                    button='Tente novamente.')
+                pyau.alert(text=f'Ocorreu um erro inesperado!\n\n'
+                         f'Tente novamente, se o erro persistir, '
+                                f'entre em contato com o Desenvolvedor.',
+                           title='Erro Crítico',
+                           button='Tente novamente.')
                 exit()
 
         def passwd():
             try:
                 password = pyau.password(text='Digite a senha do para acessar os resultados de exames.\n'
                                                    'Exemplo: 159732',
-                                              title='Digite Sua Senha.',
-                                              default='', mask='')
+                                         title='Digite Sua Senha.',
+                                         default='',
+                                         mask='')
 
                 if password is None:
                     exit()
                 elif len(password) >= 13 or len(password) < 4 or password.isalpha() or password.islower() or password.istitle():
                     pyau.alert(text=f'Você digitou algo inválido!\n'
-                                         f'O que você digitou: {password}\n\n'
-                                         f'O sistema será reiniciado para que seus dados não sejam salvos.',
-                                    title='SENHA!',
-                                    button='Tente novamente!')
+                                    f'O que você digitou: {password}\n\n'
+                                    f'O sistema será reiniciado para que seus dados'
+                                    f' não sejam salvos.',
+                               title='SENHA!',
+                               button='Tente novamente!')
                     restart()
-
-                confirma = pyau.confirm(text=f'Confira agora seus dados... \n'
-                                                  f'A senha que você digitou, tem {len(password)} caracteres.\n\n'
-                                                  f'Senha: {password}', title='CONFIRA SEUS DADOS!',
-                                             buttons=['ESTÁ TUDO CERTO!', 'PRECISO ALTERAR...'])
-                if confirma == 'PRECISO ALTERAR...':
-                    pyau.alert(
-                        text='Por sua segurança, o sistema será reiniciado. Para não salvar suas informações.',
-                        title='Reiniciando a aplicação', button='Reinicie')
-                    restart()
-
                 else:
-                    return password
+                    confirma = pyau.confirm(text=f'Confira agora seus dados... \n'
+                                                      f'A senha que você digitou, tem {len(password)} caracteres.\n\n'
+                                                      f'Senha: {password}', title='CONFIRA SEUS DADOS!',
+                                                 buttons=['ESTÁ TUDO CERTO!', 'PRECISO ALTERAR...'])
+                    if confirma is None:
+                        exit()
+                    elif confirma == 'PRECISO ALTERAR...':
+                        pyau.alert(text='Por sua segurança, o sistema será reiniciado. '
+                                        'Para não salvar suas informações.',
+                                   title='Reiniciando a aplicação',
+                                   button='Reinicie')
+                        restart()
+                    elif confirma == 'ESTÁ TUDO CERTO!':
+                        return password
             except Exception:
-                pyau.alert(
-                    text=f'Ocorreu um erro inesperado!\n\n'
-                         f'Tente novamente, se o erro persistir, entre em contato com o Desenvolvedor.',
-                    title='Erro Crítico',
-                    button='Tente novamente.')
+                pyau.alert(text=f'Ocorreu um erro inesperado!\n\n'
+                         f'Tente novamente, se o erro persistir, '
+                                f'entre em contato com o Desenvolvedor.',
+                           title='Erro Crítico',
+                           button='Tente novamente.')
 
         nrequest = req()  # Número de requisição
         passw = passwd()  # Senha
@@ -119,13 +123,14 @@ if '64' in arquitetura:
 
         sleep(1)
         chrome.find_element(By.XPATH, '//*[@id="accordion"]/div/div[1]/div[1]/div').click()
-        sleep(6)
+        sleep(7)
 
         download_exames = pyau.confirm(text='Você gostaria de baixar o(s) exame(s)?',
                                             title='Baixar?',
-                                            buttons=['Sim', 'Não'])
+                                            buttons=['Sim', 'Não, quero navegar...'])
 
         if download_exames == 'Sim':
+            sleep(1)
             pyau.alert(text='ATENÇÃO: NÃO UTILIZE SEU TECLADO, ATÉ QUE O PRÓXIMO AVISO SEJA MOSTRADO!',
                             title='ALERTA!',
                             button='TUDO BEM...')
@@ -156,106 +161,88 @@ if '64' in arquitetura:
 
 else:  # Se o sistema operacional for de 32 bits, executa esse bloco else.
     import pyautogui as pyau  # Automação de GUI
+    from selenium import webdriver as web  # Automação de testes de sistemas
     from selenium.webdriver.common.by import By
     from time import sleep
-    from selenium import webdriver as web  # Automação de testes de sistemas
     from webdriver_manager.firefox import GeckoDriverManager as drigeck # Verifica a versão atual do webdriver (Firefox)
 
     try:
         def req():
             try:
                 nrequest = pyau.prompt(text='Coloque o número da requisição:\n\n'
-                                                 'Exemplo: 5784235481', title='Digite o Número da Requisição.',
-                                            default='')
-
-                if len(nrequest) >= 11 or len(
-                        nrequest) < 10 or nrequest.isalpha() or nrequest.islower() or nrequest.istitle():
+                                                 'Exemplo: 5784235481',
+                                       title='Digite o Número da Requisição.',
+                                       default='')
+                if nrequest is None:
+                    exit()
+                elif len(nrequest) >= 11 or len(nrequest) < 10 or nrequest.isalpha() or nrequest.islower() or nrequest.istitle():
                     pyau.alert(text=f'Você digitou algo inválido!\n'
                                          f'O que você digitou: {nrequest}\n\n'
                                          f'O sistema será reiniciado para que seus dados não sejam salvos.',
                                     title='SENHA!',
                                     button='Tente novamente!')
-                    import sys
-                    import os
-                    python = sys.executable
-                    os.execl(python, python, *sys.argv)
-
+                    restart()
                 else:
                     confirma = pyau.confirm(text='Confira se os dados estão corretos...\n\n'
                                                       f'Número da requisição: {nrequest}',
                                                  title='CONFIRA SEUS DADOS!',
                                                  buttons=['ESTÁ TUDO CERTO!', 'PRECISO ALTERAR...'])
 
-                    if confirma == 'PRECISO ALTERAR...':
+                    if confirma is None:
+                        exit()
+                    elif confirma == 'PRECISO ALTERAR...':
                         pyau.alert(
                             text='Por sua segurança, o sistema será reiniciado. Para não salvar suas informações.',
                             title='Reiniciando a aplicação', button='Reinicie')
-
-                        # Reinicia a aplicação
-                        import sys
-                        import os
-                        python = sys.executable
-                        os.execl(python, python, *sys.argv)
+                        restart()
                     elif confirma == 'ESTÁ TUDO CERTO!':
                         return nrequest
-            except TypeError:  # Caso o user clique em "Cancel", retornará None e vai parar o aplicativo.
-                pyau.alert(text='Finalizando a aplicação... ', title='Finalizando a aplicação', button='OK')
+            except Exception:
+                pyau.alert(text=f'Ocorreu um erro inesperado!\n\n'
+                         f'Tente novamente, se o erro persistir, '
+                                f'entre em contato com o Desenvolvedor.',
+                           title='Erro Crítico',
+                           button='Tente novamente.')
                 exit()
-            except Exception as description:
-                pyau.alert(text='Algo deu errado...\n'
-                                     f'Mostre isso ao Desenvolvedor: {description}',
-                                title='Erro inesperado!',
-                                button='Sair')
-
-
-        nrequest = req()
-
 
         def passwd():
             try:
                 password = pyau.password(text='Digite a senha do para acessar os resultados de exames.\n'
                                                    'Exemplo: 159732',
-                                              title='Digite Sua Senha.',
-                                              default='', mask='')
+                                         title='Digite Sua Senha.',
+                                         default='',
+                                         mask='')
 
-                if len(password) >= 13 or len(
-                        password) < 4 or password.isalpha() or password.islower() or password.istitle():
+                if password is None:
+                    exit()
+                elif len(password) >= 13 or len(password) < 4 or password.isalpha() or password.islower() or password.istitle():
                     pyau.alert(text=f'Você digitou algo inválido!\n'
-                                         f'O que você digitou: {password}\n\n'
-                                         f'O sistema será reiniciado para que seus dados não sejam salvos.',
-                                    title='SENHA!',
-                                    button='Tente novamente!')
-                    import sys
-                    import os
-                    python = sys.executable
-                    os.execl(python, python, *sys.argv)
-
-                confirma = pyau.confirm(text=f'Confira agora seus dados... \n'
-                                                  f'A senha que você digitou, tem {len(password)} caracteres.\n\n'
-                                                  f'Senha: {password}', title='CONFIRA SEUS DADOS!',
-                                             buttons=['ESTÁ TUDO CERTO!', 'PRECISO ALTERAR...'])
-                if confirma == 'PRECISO ALTERAR...':
-                    pyau.alert(
-                        text='Por sua segurança, o sistema será reiniciado. Para não salvar suas informações.',
-                        title='Reiniciando a aplicação', button='Reinicie')
-
-                    # Reinicia a aplicação
-                    import sys
-                    import os
-                    python = sys.executable
-                    os.execl(python, python, *sys.argv)
+                                    f'O que você digitou: {password}\n\n'
+                                    f'O sistema será reiniciado para que seus dados'
+                                    f' não sejam salvos.',
+                               title='SENHA!',
+                               button='Tente novamente!')
+                    restart()
                 else:
-                    return password
-            except TypeError:
-                pyau.alert(text='Finalizando a aplicação...', title='Finalizando a aplicação', button='OK')
-                exit()
+                    confirma = pyau.confirm(text=f'Confira agora seus dados... \n'
+                                                      f'A senha que você digitou, tem {len(password)} caracteres.\n\n'
+                                                      f'Senha: {password}', title='CONFIRA SEUS DADOS!',
+                                                 buttons=['ESTÁ TUDO CERTO!', 'PRECISO ALTERAR...'])
+                    if confirma == 'PRECISO ALTERAR...':
+                        pyau.alert(text='Por sua segurança, o sistema será reiniciado. '
+                                        'Para não salvar suas informações.',
+                                   title='Reiniciando a aplicação',
+                                   button='Reinicie')
+                        restart()
+                    elif confirma == 'ESTÁ TUDO CERTO!':
+                        return password
             except Exception as description:
                 pyau.alert(text='Algo deu errado...\n'
                                      f'Mostre isso ao Desenvolvedor: {description}',
-                                title='Erro inesperado!',
-                                button='Sair')
+                           title='Erro inesperado!',
+                           button='Sair')
 
-
+        nrequest = req()
         passw = passwd()
 
         firefox = web.Firefox(executable_path=drigeck().install())
@@ -269,13 +256,14 @@ else:  # Se o sistema operacional for de 32 bits, executa esse bloco else.
 
         sleep(1)
         firefox.find_element(By.XPATH, '//*[@id="accordion"]/div/div[1]/div[1]/div').click()
-        sleep(6)
+        sleep(7)
 
         download_exames = pyau.confirm(text='Você gostaria de baixar o(s) exame(s)?',
                                             title='Baixar?',
-                                            buttons=['Sim', 'Não'])
+                                            buttons=['Sim', 'Não, quero navegar...'])
 
         if download_exames == 'Sim':
+            sleep(1)
             pyau.alert(text='ATENÇÃO: NÃO UTILIZE SEU TECLADO, ATÉ QUE O PRÓXIMO AVISO SEJA MOSTRADO!',
                             title='ALERTA!',
                             button='TUDO BEM...')
@@ -294,14 +282,12 @@ else:  # Se o sistema operacional for de 32 bits, executa esse bloco else.
                             button='Tudo bem, vou escolher um local e um nome para o arquivo...')
         else:
             pyau.alert(text=f'Meu trabalho acaba por aqui, você pode ver o(s) exame(s), ou baixar manualmente...!',
-                            title='MEU TRABALHO POR AQUI ACABOU!',
+                            title='MEU TRABALHO ACABOU!',
                             button='OK...')
-    except Exception as description:
-        pyau.alert(text=f'Ocorreu um erro inesperado!\n\n '
-                             f'Veja se você não colocou nenhum dado incorreto.\n '
-                             f'Se o erro persistir, mostre a descrição da exceção para o Desenvolvedor. '
-                             f'\n\n Descrição da exceção: {description}\n\n '
-                             f'O navegador ficará aberto para que você possa fazer o que quiser...',
-                        title='Erro Crítico',
-                        button='OK')
+    except Exception:
+        pyau.alert(
+            text=f'Ocorreu um erro inesperado!\n\n'
+                 f'Tente novamente, se o erro persistir, entre em contato com o Desenvolvedor.',
+            title='Erro Crítico',
+            button='Tente novamente.')
         exit()

@@ -14,12 +14,17 @@ arquitetura=$(uname -m)
 
 if [ $arquitetura == 'x86_64' ] ;
 then    echo
-	echo '--------------------------------------'
+	      echo '--------------------------------------'
         echo '|    A sua arquitetura é 64 bits.    |'
         echo '--------------------------------------'
         echo
         echo 'Verificando atualizações...'
         echo
+        ## Removendo travas eventuais do apt ##
+        sudo rm /var/lib/dpkg/lock-frontend
+        sudo rm /var/cache/apt/archives/lock
+        ## Removendo travas eventuais do apt ##
+
         sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove  -y
         echo
         echo 'Limpando a tela...'
@@ -54,7 +59,7 @@ then    echo
         sleep 2  # Espera 2 segundos
         sudo pip3 install --upgrade requests
         sleep 2  # Espera 2 segundos
-	sudo pip3 install --upgrade setuptools
+	      sudo pip3 install --upgrade setuptools
         echo
         echo 'Limpando a tela...'
         sleep 2  # Espera 2 segundos
@@ -77,7 +82,7 @@ then    echo
                 exit
         fi
 else    echo
-	echo '----------------------------------------'
+	      echo '----------------------------------------'
         echo '|     A sua arquitetura é 32 bits.     |'
         echo '----------------------------------------'
         echo
@@ -85,6 +90,10 @@ else    echo
         echo
         echo 'Verificando atualizações...'
         echo
+        ## Removendo travas eventuais do apt ##
+        sudo rm /var/lib/dpkg/lock-frontend
+        sudo rm /var/cache/apt/archives/lock
+        ## Removendo travas eventuais do apt ##
         sudo apt update && sudo apt upgrade && sudo apt autoremove -y
         echo
         echo 'Limpando a tela...'

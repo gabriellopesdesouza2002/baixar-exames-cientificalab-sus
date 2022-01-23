@@ -238,7 +238,7 @@ else:  # Se o sistema operacional for de 32 bits, executa esse bloco else.
                         return password
             except Exception as description:
                 pyau.alert(text='Algo deu errado...\n'
-                                     f'Mostre isso ao Desenvolvedor: {description}',
+                                f'Mostre isso ao Desenvolvedor: {description}',
                            title='Erro inesperado!',
                            button='Sair')
 

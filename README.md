@@ -41,10 +41,11 @@ assistente, para lhe ajudar!**)
 > Posteriormente, irei desenvolver estas soluções para as demais distribuições Linux e quem sabe, 
 > até para o Windows...
 > 
-> Distribuições Linux testadas até o momento:
+> Distribuições Linux testadas até o momento (baseadas no Ubuntu):
 > 
-> - Linux Mint 64 bits e 32 bits (19).
-> - Linux Lite 64 bits (5.4).
+> - Linux Mint 64 bits e 32 bits (19);
+> - Linux Lite 64 bits (5.4);
+> - Debian GNU/Linux 11 (bullseye).
   
 ---
 

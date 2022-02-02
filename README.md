@@ -11,9 +11,6 @@ Esse robô foi feito com Python na versão 3.8 e as suas bibliotecas:
   
 > O "bot" irá acessar ao site da [CientíficaLab](https://cientificalab.com.br/) ®, entrará com o número da requisição
 > e a senha, e perguntará se você quer baixar os exames ou simplesmente ver os mesmos. 
-> 
-> O número da requisição e a senha foi entregue pelo enfermeiro(a), médico(a) ou Aux. de Enfermagem
-> na hora em que você fez o exame.
 
 ## Requisitos para usar o robô...  
 1 – Utilizar Linux.

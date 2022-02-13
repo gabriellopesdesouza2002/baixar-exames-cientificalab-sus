@@ -122,10 +122,11 @@ if '64' in arquitetura:
         chrome.find_element(By.XPATH, '//*[@id="ztmEntrar"]').click()
 
         sleep(1)
+        nome = chrome.find_element(By.XPATH, '//*[contains(concat( " ", @class, " " ), concat( " ", "col-lg-10", " " ))]//span').text
         chrome.find_element(By.XPATH, '//*[@id="accordion"]/div/div[1]/div[1]/div').click()
         sleep(7)
 
-        download_exames = pyau.confirm(text='Você gostaria de baixar o(s) exame(s)?',
+        download_exames = pyau.confirm(text=f'{nome}, gostaria de baixar o(s) exame(s)?',
                                             title='Baixar?',
                                             buttons=['Sim', 'Não, quero navegar...'])
 
